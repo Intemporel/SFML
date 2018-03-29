@@ -1688,6 +1688,9 @@ void WindowImplX11::initialize()
     // Create the hidden cursor
     createHiddenCursor();
 
+    // init X11 keycode <-> SFML scancode mapping
+    X11InputManager::getInstance().initialize(m_display);
+
     // Flush the commands queue
     XFlush(m_display);
 
@@ -2282,5 +2285,4 @@ Vector2i WindowImplX11::getPrimaryMonitorPosition()
 }
 
 } // namespace priv
-
 } // namespace sf
