@@ -2006,6 +2006,15 @@ bool WindowImplX11::processEvent(XEvent& windowEvent)
             break;
         }
 
+        // Keyboard mapping changed
+        case MappingNotify:
+        {
+            if (windowEvent.xmapping.request == MappingKeyboard)
+                XRefreshKeyboardMapping(&windowEvent.xmapping);
+
+            break;
+        }
+
         // Window unmapped
         case UnmapNotify:
         {
